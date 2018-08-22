@@ -4,20 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:background="#3f51b5"
+    tools:context=".activities.SignUpActivity"
     android:background="@color/colorPrimary">
 
     <TextView
-        android:id="@+id/welcomeTextView"
+        android:id="@+id/faqsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Welcome"
-        android:textSize="60dp"
+        android:text="FAQS"
+        android:textSize="15dp"
         android:gravity="center_horizontal"
         android:textColor="@android:color/white"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/backFaqsButton"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="back"
+        android:textSize="10dp"/>
 
 
 </RelativeLayout>

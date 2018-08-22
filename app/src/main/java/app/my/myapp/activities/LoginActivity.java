@@ -1,14 +1,15 @@
-package android.app.my.myapp.activities;
+package app.my.myapp.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.app.my.myapp.R;
+import app.my.myapp.R;
 
-public class ProfileActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
     }
 }

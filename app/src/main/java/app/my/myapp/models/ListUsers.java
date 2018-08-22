@@ -1,6 +1,6 @@
-package android.app.my.myapp.models;
+package app.my.myapp.models;
 
-import android.app.my.myapp.models.User;
+import app.my.myapp.models.User;
 
 import com.google.gson.annotations.SerializedName;
 

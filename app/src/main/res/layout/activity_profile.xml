@@ -1,9 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ProfileActivity">
+    tools:background="#3f51b5"
+    android:background="@color/colorPrimary">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/gameDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Date"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="50dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/gameDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Next Game"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/gamePrizeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Prize"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="150dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/gamePrizeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Prize"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="150dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_toLeftOf="@id/gamePrizeTextView"
+        android:layout_marginRight="20dp"/>
+
+    <ImageView
+        android:id="@+id/avatarImageButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="180dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_centerHorizontal="true"/>
+
+
+    <TextView
+        android:id="@+id/nicknameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Nickname"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="250dp"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/balanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Balance"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="300dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/balanceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Balance"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_toLeftOf="@id/balanceTextView"
+        android:layout_marginTop="300dp"
+        android:layout_marginRight="10dp"/>
+
+    <TextView
+        android:id="@+id/extraLifeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Extra Life"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="340dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/extraLifeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Extra Life"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_toLeftOf="@id/extraLifeTextView"
+        android:layout_marginTop="340dp"
+        android:layout_marginRight="10dp"/>
+
+    <Button
+        android:id="@+id/menuButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="Menu"
+        android:textSize="5dp"
+        android:layout_marginTop="380dp"/>
+
+    <Button
+        android:id="@+id/listGameButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="Lista Games"
+        android:textSize="5dp"
+        android:layout_marginTop="380dp"
+        android:layout_toRightOf="@id/menuButton"/>
+
+
+</RelativeLayout>

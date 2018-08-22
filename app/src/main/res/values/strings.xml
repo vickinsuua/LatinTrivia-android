@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">myapp</string>
+    <string name="facebook_app_id">2058889390864857</string>
+    <string name="fb_login_protocol_scheme">fb2058889390864857</string>
+    <string name="cancel_login_fb">Se cancelo login</string>
+    <string name="error_login_fb">Error con el login</string>
+    <string name="title_activity_rules">RulesActivity</string>
 </resources>

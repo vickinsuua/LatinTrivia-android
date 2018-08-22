@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.RegisterActivity">
+    tools:context=".activities.SignUpActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/registerButtom"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="next"
+        android:textSize="10dp"/>
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/avatarImageButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"/>
+
+
+
+    <EditText
+        android:id="@+id/nicknameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="nick name"
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/referralCodeEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="referral code"
+        android:layout_marginTop="250dp"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

@@ -1,20 +1,34 @@
-package android.app.my.myapp.models;
+package app.my.myapp.models;
 
-    public class User {
+import com.google.gson.annotations.SerializedName;
 
+public class User {
+
+        @SerializedName("_id")
         private String _id;
+        @SerializedName("nickname")
+        private String nickname;
+        @SerializedName("avatar")
         private String avatar;
+        @SerializedName("contry_code")
         private String contry_code;
+        @SerializedName("phone")
         private String phone;
+        @SerializedName("referral_code")
         private String referral_code;
-        private double extra_life;
-        private double balance;
+        @SerializedName("extra_life")
+        private int extra_life;
+        @SerializedName("balance")
+        private int balance;
 
-        /**
-         * No args constructor for use in serialization
-         *
-         */
-        public User() {
+
+
+        public User( String avatar, String nickname, String referral_code) {
+            super();
+            this.avatar = avatar;
+            this.nickname = nickname;
+            this.referral_code = referral_code;
+
         }
 
         /**
@@ -27,9 +41,10 @@ package android.app.my.myapp.models;
          * @param avatar
          * @param extraLife
          */
-        public User(String id, String avatar, String contryCode, String phone, String referralCode, double extraLife, double balance) {
+        public User(String id, String nickname, String avatar, String contryCode, String phone, String referralCode, int extraLife, int balance) {
             super();
             this._id = _id;
+            this.nickname = nickname;
             this.avatar = avatar;
             this.contry_code = contryCode;
             this.phone = phone;
@@ -42,9 +57,14 @@ package android.app.my.myapp.models;
             return _id;
         }
 
-        public void setId(String _id) {
-            this._id = _id;
-        }
+
+        public String getNickname() {
+        return nickname;
+    }
+
+        public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
         public String getAvatar() {
             return avatar;
@@ -78,27 +98,38 @@ package android.app.my.myapp.models;
             this.referral_code = referral_code;
         }
 
-        public double getExtraLife() {
+        public int getExtraLife() {
             return extra_life;
         }
 
-        public void setExtraLife(double extra_life) {
+        public void setExtraLife(int extra_life) {
             this.extra_life = extra_life;
         }
 
-        public double getBalance() {
+        public int getBalance() {
             return balance;
         }
 
-        public void setBalance(double balance) {
+        public void setBalance(int balance) {
             this.balance = balance;
         }
+
+        private User user;
+
+        public User getUser() {
+        return user;
+    }
+
+        public void setUsers(User user) {
+        this.user = user;
+    }
 
         @Override
         public String toString() {
 
             return "User{" +
                     "_id='" + _id + '\'' +
+                    "nickname='" + nickname + '\'' +
                     ", avatar='" + avatar + '\'' +
                     ", contry_code='" + contry_code + '\'' +
                     ", phone='" + phone + '\'' +

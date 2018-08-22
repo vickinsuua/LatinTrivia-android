@@ -1,9 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.UploadQuestionActivity">
+    tools:context=".activities.SignUpActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/uploadQuestionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"/>
+
+    <EditText
+        android:id="@+id/questionEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="question"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+    android:id="@+id/correctAnswerEditText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:inputType="text"
+    android:text="Correct answer"
+    android:layout_marginTop="150dp"
+    android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/optionBEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="OptionB"
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/optionCEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="OptionC"
+        android:layout_marginTop="250dp"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/categoryEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="category"
+        android:layout_marginTop="300dp"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/backQuestionButton"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="back"
+        android:textSize="10dp"/>
+
+</RelativeLayout>
+
+

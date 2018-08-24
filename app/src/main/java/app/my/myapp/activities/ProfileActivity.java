@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 
@@ -32,9 +33,10 @@ public class ProfileActivity extends AppCompatActivity {
     TextView gamePrizeTextView;
     private static final String TAG = "error";
     public String android_id;
+    public String token;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
@@ -82,6 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
                     nicknameTextView.setText(response.body().getNickname());
                     balanceTextView.setText( Integer.toString(response.body().getBalance()));
                     extraLifeTextView.setText( Integer.toString(response.body().getExtraLife()));
+                    saveCredentials(response);
                 } else {
                 }
             }
@@ -111,4 +114,26 @@ public class ProfileActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    private void saveCredentials(Response<User> response) {
+        SharedPreferences preferences = getSharedPreferences("credentials", Context.MODE_PRIVATE);
+
+        String userCredential = response.body().getId().toString();
+        String tokenCredential = token;
+        String deviceCredential = android_id;
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("userCredential", userCredential);
+        editor.putString("tokenCredential",tokenCredential);
+        editor.putString("deviceCredential", deviceCredential);
+        editor.commit();
+
+    }
+
+    private void getCredentials() {
+        SharedPreferences preferences = getSharedPreferences("credentials", Context.MODE_PRIVATE);
+        String userId = preferences.getString("userCredential","NO EXISTE VALOR");
+
+    }
+
 }

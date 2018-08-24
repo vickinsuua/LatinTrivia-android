@@ -8,7 +8,7 @@
     android:background="@color/colorPrimary">
 
     <TextView
-        android:id="@+id/contactTextView"
+        android:id="@+id/contactTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -18,6 +18,18 @@
         android:textColor="@android:color/white"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/contactDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Contact"
+        android:textSize="15dp"
+        android:gravity="center_horizontal"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
 
     <Button
         android:id="@+id/backContactButton"

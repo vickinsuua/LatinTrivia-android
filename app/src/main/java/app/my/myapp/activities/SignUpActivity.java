@@ -163,7 +163,6 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 Toast.makeText(SignUpActivity.this, "YESSSSS", Toast.LENGTH_SHORT).show();
-                saveCredentials(response);
                 Intent intent = new Intent(SignUpActivity.this, VerificationActivity.class);
                 startActivity(intent);
                 finish();
@@ -175,21 +174,6 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.e("ERRRRROOROROOR: ", t.getMessage());
             }
         });
-    }
-
-    private void saveCredentials(Response<User> response) {
-        Log.e( "saveCredentials: ", response.body().toString());
-        SharedPreferences preferences = getSharedPreferences("credentials", Context.MODE_PRIVATE);
-
-        String userCredential = response.body().getId().toString();
-        String tokenCredential = token;
-        String deviceCredential = android_id;
-
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("userCredential", userCredential);
-        editor.putString("tokenCredential",tokenCredential);
-        editor.putString("deviceCredential", deviceCredential);
-        editor.commit();
     }
 
     private void verificationUserFacebook(VerificationFacebookRequest verificationFacebook){
@@ -215,9 +199,6 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
 
 
 }

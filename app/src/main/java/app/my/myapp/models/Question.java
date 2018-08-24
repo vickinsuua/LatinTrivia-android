@@ -1,5 +1,7 @@
 package app.my.myapp.models;
 
+import android.content.Intent;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Question {

@@ -1,17 +1,19 @@
 package app.my.myapp.api;
 
 
-import android.app.my.myapp.models.Setting;
 
 import java.util.Date;
 
 import app.my.myapp.api.requests.RegisterRequest;
 import app.my.myapp.api.requests.VerificationFacebookRequest;
 import app.my.myapp.api.requests.VerificationRequest;
+import app.my.myapp.models.Category;
 import app.my.myapp.models.Game;
+import app.my.myapp.models.ListCategory;
 import app.my.myapp.models.ListUsers;
 
 import app.my.myapp.models.Question;
+import app.my.myapp.models.Setting;
 import app.my.myapp.models.User;
 import app.my.myapp.models.Verification;
 import okhttp3.MultipartBody;
@@ -38,8 +40,11 @@ public class ApiService {
         @GET("/api/v1/game/show/{date}")
         Call<Game> getGame(@Path("date") String date);
 
-        @GET("/api/v1/setting/{id}")
-        Call<Setting> getSetting(@Path("id") String id);
+        @GET("/api/v1/category/all")
+        Call<ListCategory> getCategory();
+
+        @GET("/api/v1/setting/{type}")
+        Call<Setting> getSetting(@Path("type") String type);
 
         @POST("/api/v1/verification/")
         Call<User> signup(@Body VerificationRequest verification);
@@ -51,8 +56,9 @@ public class ApiService {
         Call<Question> uploadQuestion(@Body Question question);
 
         @Headers({"Content-Type: application/json"})
+        @Multipart
         @PATCH("/api/v1/user/registerfinal")
-        Call<User> registerFinal(@Body RegisterRequest registerRequest);
+        Call<User> registerFinal(@Part MultipartBody.Part avatar, @Part ("nickname") RequestBody nickname, @Part ("referral_code") RequestBody referral_code, @Part ("device_id") RequestBody device_id);
 
         @Headers({"Content-Type: application/json"})
         @PATCH("/api/v1/verification/code/{id}")

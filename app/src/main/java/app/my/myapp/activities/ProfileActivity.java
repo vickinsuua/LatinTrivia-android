@@ -3,17 +3,28 @@ package app.my.myapp.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 
 import app.my.myapp.R;
 import app.my.myapp.api.ApiService;
+import app.my.myapp.api.requests.AddExtraLifeRequest;
 import app.my.myapp.models.Game;
 import app.my.myapp.models.User;
 import butterknife.ButterKnife;
@@ -31,6 +42,9 @@ public class ProfileActivity extends AppCompatActivity {
     TextView extraLifeTextView;
     TextView gameDateTextView;
     TextView gamePrizeTextView;
+    Button shareCode;
+    CallbackManager callbackManager;
+    ShareDialog shareDialog;
     private static final String TAG = "error";
     public String android_id;
     public String token;
@@ -38,16 +52,57 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
         getSupportActionBar().hide();
+        token = AccessToken.getCurrentAccessToken().getToken();
         android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+
+        //init view
 
         nicknameTextView = (TextView)findViewById(R.id.nicknameTextView);
         balanceTextView = (TextView)findViewById(R.id.balanceTextView);
         extraLifeTextView = (TextView)findViewById(R.id.extraLifeTextView);
         gameDateTextView = (TextView)findViewById(R.id.gameDateTextView);
         gamePrizeTextView = (TextView)findViewById(R.id.gamePrizeTextView);
+        shareCode = (Button)findViewById(R.id.getExtraLifeButton);
+
+
+        //init FB
+        callbackManager = CallbackManager.Factory.create();
+        shareDialog = new ShareDialog(this);
+
+        shareCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
+                    @Override
+                    public void onSuccess(Sharer.Result result) {
+                        Toast.makeText(ProfileActivity.this,"Share success", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(ProfileActivity.this,"Share Cancel", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                        Toast.makeText(ProfileActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                if (ShareDialog.canShow(ShareLinkContent.class)){
+                    ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                            .setQuote("This is a useful link")
+                            .setContentUrl(Uri.parse("https://youtube.com"))
+                            .build();
+                    shareDialog.show(linkContent);
+                }
+            }
+        });
+
 
         final Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.237.158.103:3000")
@@ -75,7 +130,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
-        final Call<User> user = api.getUser(AccessToken.getCurrentAccessToken().getToken(),android_id);
+        final Call<User> user = api.getUser(token,android_id);
 
         user.enqueue(new Callback<User>() {
             @Override
@@ -94,6 +149,12 @@ public class ProfileActivity extends AppCompatActivity {
                 Log.e(TAG, "QQQQQQQQQQQQQQQQQ"+t.getMessage() );
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode,resultCode,data);
     }
 
     /**

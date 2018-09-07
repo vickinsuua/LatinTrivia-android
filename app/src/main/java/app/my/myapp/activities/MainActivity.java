@@ -27,6 +27,7 @@ import com.google.gson.ExclusionStrategy;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -2,15 +2,11 @@ package app.my.myapp.api;
 
 
 
-import java.util.Date;
-
-import app.my.myapp.api.requests.RegisterRequest;
+import app.my.myapp.api.requests.AddExtraLifeRequest;
 import app.my.myapp.api.requests.VerificationFacebookRequest;
 import app.my.myapp.api.requests.VerificationRequest;
-import app.my.myapp.models.Category;
 import app.my.myapp.models.Game;
 import app.my.myapp.models.ListCategory;
-import app.my.myapp.models.ListUsers;
 
 import app.my.myapp.models.Question;
 import app.my.myapp.models.Setting;
@@ -33,7 +29,9 @@ public class ApiService {
 
     public interface Api {
 
-
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
         @GET("/api/v1/user/")
         Call<User> getUser(@Header("user-token") String token, @Header("device_id") String device_id);
 
@@ -46,9 +44,15 @@ public class ApiService {
         @GET("/api/v1/setting/{type}")
         Call<Setting> getSetting(@Path("type") String type);
 
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
         @POST("/api/v1/verification/")
         Call<User> signup(@Body VerificationRequest verification);
 
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
         @POST("/api/v1/verification/")
         Call<User> signup(@Body VerificationFacebookRequest verificationFacebook);
 

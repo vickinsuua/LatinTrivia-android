@@ -58,9 +58,10 @@ public class UploadQuestionActivity extends AppCompatActivity implements Adapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_question);
         ButterKnife.bind(this);
+        getSupportActionBar().hide();
 
         final Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.237.158.103:3000")
+                .baseUrl("http://10.237.158.104:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -107,7 +108,6 @@ public class UploadQuestionActivity extends AppCompatActivity implements Adapter
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
          idCategory = listCategories.get(position).get_id();
-        Toast.makeText(UploadQuestionActivity.this, "Id"+idCategory , Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -128,7 +128,6 @@ public class UploadQuestionActivity extends AppCompatActivity implements Adapter
                     optionCView.getText().toString(),
                     idCategory
             );
-            Log.e("ERRRRROOROROOR: ", question.toString());
             sendNetworkRequest(question);
         }
     }
@@ -147,7 +146,7 @@ public class UploadQuestionActivity extends AppCompatActivity implements Adapter
 
     private void sendNetworkRequest(Question question){
         Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl("http://10.237.158.103:3000")
+                .baseUrl("http://10.237.158.104:3000")
                 .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
@@ -159,13 +158,12 @@ public class UploadQuestionActivity extends AppCompatActivity implements Adapter
         call.enqueue(new Callback<Question>() {
             @Override
             public void onResponse(Call<Question> call, Response<Question> response) {
-                Toast.makeText(UploadQuestionActivity.this, "YESSSSS", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UploadQuestionActivity.this, "Submit", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<Question> call, Throwable t) {
-                Toast.makeText(UploadQuestionActivity.this, "something went wrong", Toast.LENGTH_SHORT).show();
-                Log.e("ERRRRROOROROOR: ", t.getMessage());
+                Toast.makeText(UploadQuestionActivity.this, "Connection refuse", Toast.LENGTH_SHORT).show();
             }
         });
     }

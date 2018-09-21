@@ -18,6 +18,9 @@ android {
     }
     productFlavors {
     }
+    buildTypes.each {
+        it.buildConfigField('String', 'THE_API_TOKEN', ApiToken)
+    }
 }
 
 dependencies {
@@ -34,6 +37,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.google.firebase:firebase-messaging:17.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
 }
+
+apply plugin: 'com.google.gms.google-services'

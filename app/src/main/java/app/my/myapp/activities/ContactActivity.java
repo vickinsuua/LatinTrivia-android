@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import app.my.myapp.R;
 import app.my.myapp.api.ApiService;
@@ -40,7 +41,7 @@ public class ContactActivity extends AppCompatActivity {
         ContactDescription = (TextView)findViewById(R.id.contactDescriptionTextView);
 
         final Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.237.158.103:3000")
+                .baseUrl("http://10.237.158.104:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -51,23 +52,18 @@ public class ContactActivity extends AppCompatActivity {
         setting.enqueue(new Callback<Setting>() {
             @Override
             public void onResponse(Call<Setting> call, Response<Setting> response) {
-                if (response.isSuccessful()) {
-                    ContactTitle.setText(response.body().getName());
-                    ContactDescription.setText(response.body().getDescription());
-                } else {
-                }
+                ContactTitle.setText(response.body().getName());
+                ContactDescription.setText(response.body().getDescription());
             }
-
             @Override
             public void onFailure(Call<Setting> call, Throwable t) {
-
+                Toast.makeText(ContactActivity.this, "Connection refuse", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @OnClick(R.id.backContactButton)
     void onBackContact(){
-        Log.i(TAG, "onBackContact: ");
         Intent intent = new Intent(ContactActivity.this, SettingActivity.class);
         startActivity(intent);
     }

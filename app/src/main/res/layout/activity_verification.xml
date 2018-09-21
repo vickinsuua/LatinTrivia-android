@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.SignUpActivity">
+    tools:context=".activities.SignUpActivity"
+    android:background="@color/colorPrimary">
 
     <EditText
         android:id="@+id/verificationCodeEditText"
@@ -14,6 +15,7 @@
         android:inputType="text"
         android:text="code"
         android:layout_marginTop="150dp"
+        android:textColor="@android:color/white"
         android:layout_centerHorizontal="true" />
 
 

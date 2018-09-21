@@ -32,6 +32,7 @@ public class VerificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification);
         ButterKnife.bind(this);
+        getSupportActionBar().hide();
         android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
@@ -65,7 +66,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     private void sendNetworkRequest(Verification verification){
-        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://10.237.158.103:3000").addConverterFactory(GsonConverterFactory.create());
+        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://10.237.158.104:3000").addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
 
@@ -77,7 +78,7 @@ public class VerificationActivity extends AppCompatActivity {
         call.enqueue(new Callback<Verification>() {
             @Override
             public void onResponse(Call<Verification> call, Response<Verification> response) {
-                Toast.makeText(VerificationActivity.this, "YESSSSS", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VerificationActivity.this, "Verify", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(VerificationActivity.this, RegisterActivity.class);
                 startActivity(intent);
                 finish();
@@ -85,7 +86,7 @@ public class VerificationActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Verification> call, Throwable t) {
-                Toast.makeText(VerificationActivity.this, "something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VerificationActivity.this, "Connection refuse", Toast.LENGTH_SHORT).show();
             }
         });
     }

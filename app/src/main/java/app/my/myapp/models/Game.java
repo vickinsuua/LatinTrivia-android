@@ -8,11 +8,11 @@ public class Game {
     @SerializedName("_id")
     private String _id;
     @SerializedName("date")
-    private String date;
+    private Date date;
     @SerializedName("prize")
     private int prize;
 
-    public Game(String date, int prize) {
+    public Game(Date date, int prize) {
         this.date = date;
         this.prize = prize;
     }
@@ -21,11 +21,11 @@ public class Game {
         return _id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

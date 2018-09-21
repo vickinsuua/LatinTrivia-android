@@ -2,12 +2,16 @@ package app.my.myapp.api;
 
 
 
+import java.util.List;
+
 import app.my.myapp.api.requests.AddExtraLifeRequest;
 import app.my.myapp.api.requests.VerificationFacebookRequest;
 import app.my.myapp.api.requests.VerificationRequest;
 import app.my.myapp.models.Game;
 import app.my.myapp.models.ListCategory;
 
+import app.my.myapp.models.ListGames;
+import app.my.myapp.models.Notification;
 import app.my.myapp.models.Question;
 import app.my.myapp.models.Setting;
 import app.my.myapp.models.User;
@@ -35,12 +39,33 @@ public class ApiService {
         @GET("/api/v1/user/")
         Call<User> getUser(@Header("user-token") String token, @Header("device_id") String device_id);
 
-        @GET("/api/v1/game/show/{date}")
-        Call<Game> getGame(@Path("date") String date);
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
+        @GET("/api/v1/game/show")
+        Call<Game> getGame();
 
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
+        @GET("/api/v1/report/games/week")
+        Call<List<Game>> getListGames();
+
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
+        @GET("/api/v1/notification/general/mailbox")
+        Call<List<Notification>> getNotifications();
+
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
         @GET("/api/v1/category/all")
         Call<ListCategory> getCategory();
 
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
         @GET("/api/v1/setting/{type}")
         Call<Setting> getSetting(@Path("type") String type);
 
@@ -56,6 +81,9 @@ public class ApiService {
         @POST("/api/v1/verification/")
         Call<User> signup(@Body VerificationFacebookRequest verificationFacebook);
 
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
         @POST("/api/v1/question")
         Call<Question> uploadQuestion(@Body Question question);
 

@@ -151,7 +151,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     private void verificationUser(VerificationRequest verification){
-        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://10.237.158.103:3000").addConverterFactory(GsonConverterFactory.create());
+        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://10.237.158.104:3000").addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
 
@@ -162,7 +162,7 @@ public class SignUpActivity extends AppCompatActivity {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                Toast.makeText(SignUpActivity.this, "YESSSSS", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, "SMS send", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SignUpActivity.this, VerificationActivity.class);
                 startActivity(intent);
                 finish();
@@ -170,14 +170,13 @@ public class SignUpActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(SignUpActivity.this, "something  wrong", Toast.LENGTH_SHORT).show();
-                Log.e("ERRRRROOROROOR: ", t.getMessage());
+                Toast.makeText(SignUpActivity.this, "Connection refuse", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void verificationUserFacebook(VerificationFacebookRequest verificationFacebook){
-        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://10.237.158.103:3000").addConverterFactory(GsonConverterFactory.create());
+        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://10.237.158.104:3000").addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
 
@@ -188,14 +187,13 @@ public class SignUpActivity extends AppCompatActivity {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                Toast.makeText(SignUpActivity.this, "YESSSSS", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, "Submit", Toast.LENGTH_SHORT).show();
                 goRegister();
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(SignUpActivity.this, "something  wrong55555", Toast.LENGTH_SHORT).show();
-                Log.e("ERRRRROOROROOR: ", t.getMessage());
+                Toast.makeText(SignUpActivity.this, "Connection refuse", Toast.LENGTH_SHORT).show();
             }
         });
     }

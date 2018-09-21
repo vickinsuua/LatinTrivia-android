@@ -36,30 +36,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Prize"
+        android:text="prize"
         android:textColor="@android:color/white"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginRight="10dp"/>
 
     <TextView
         android:id="@+id/gamePrizeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Prize"
+        android:text="prize"
         android:textColor="@android:color/white"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_toLeftOf="@id/gamePrizeTextView"
+        android:layout_toRightOf="@id/gamePrizeTextView"
         android:layout_marginRight="20dp"/>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/avatarImageButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="180dp"
         android:src="@drawable/ic_launcher_foreground"
         android:layout_centerHorizontal="true"/>
@@ -128,17 +129,55 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:text="Menu"
+        android:background="@android:color/white"
         android:textSize="5dp"
-        android:layout_marginTop="380dp"/>
+        android:layout_marginTop="450dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
 
     <Button
         android:id="@+id/listGameButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:text="Lista Games"
+        android:background="@android:color/white"
         android:textSize="5dp"
-        android:layout_marginTop="380dp"
-        android:layout_toRightOf="@id/menuButton"/>
+        android:layout_marginTop="450dp"
+        android:layout_toRightOf="@id/menuButton"
+        android:layout_marginRight="10dp" />
+
+    <Button
+        android:id="@+id/listBoardButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="Leaderboard"
+        android:background="@android:color/white"
+        android:textSize="5dp"
+        android:layout_marginTop="450dp"
+        android:layout_toRightOf="@id/listGameButton"
+        android:layout_marginRight="10dp" />
+
+    <Button
+        android:id="@+id/mailboxButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="Mailbox"
+        android:background="@android:color/white"
+        android:textSize="5dp"
+        android:layout_marginTop="450dp"
+        android:layout_toRightOf="@id/listBoardButton"
+        android:layout_marginRight="10dp" />
+
+    <Button
+        android:id="@+id/uploadButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="Upload"
+        android:background="@android:color/white"
+        android:textSize="5dp"
+        android:layout_marginTop="450dp"
+        android:layout_toRightOf="@id/mailboxButton"
+        android:layout_marginRight="10dp" />
 
     <Button
         android:id="@+id/getExtraLifeButton"
@@ -147,7 +186,8 @@
         android:text="get more"
         android:textSize="5dp"
         android:layout_toRightOf="@id/extraLifeTextView"
-        android:layout_marginTop="335dp"/>
+        android:layout_marginTop="335dp"
+        android:layout_marginRight="10dp"/>
 
 
 </RelativeLayout>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import app.my.myapp.R;
 import app.my.myapp.api.ApiService;
@@ -32,7 +33,7 @@ public class PrivacyActivity extends AppCompatActivity {
         PrivacyDescription = (TextView)findViewById(R.id.privacyDescriptionTextView);
 
         final Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.237.158.103:3000")
+                .baseUrl("http://10.237.158.104:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -43,16 +44,12 @@ public class PrivacyActivity extends AppCompatActivity {
         setting.enqueue(new Callback<Setting>() {
             @Override
             public void onResponse(Call<Setting> call, Response<Setting> response) {
-                if (response.isSuccessful()) {
-                    PrivacyTitle.setText(response.body().getName());
-                    PrivacyDescription.setText(response.body().getDescription());
-                } else {
-                }
+                PrivacyTitle.setText(response.body().getName());
+                PrivacyDescription.setText(response.body().getDescription());
             }
-
             @Override
             public void onFailure(Call<Setting> call, Throwable t) {
-
+                Toast.makeText(PrivacyActivity.this, "Connection refuse", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import app.my.myapp.R;
 import app.my.myapp.api.ApiService;
@@ -31,7 +32,7 @@ public class FAQSActivity extends AppCompatActivity {
         FAQSDescription = (TextView)findViewById(R.id.faqsDescriptionTextView);
 
         final Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.237.158.103:3000")
+                .baseUrl("http://10.237.158.104:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -42,16 +43,13 @@ public class FAQSActivity extends AppCompatActivity {
         setting.enqueue(new Callback<Setting>() {
             @Override
             public void onResponse(Call<Setting> call, Response<Setting> response) {
-                if (response.isSuccessful()) {
-                    FAQSTitle.setText(response.body().getName());
-                    FAQSDescription.setText(response.body().getDescription());
-                } else {
-                }
-            }
+                FAQSTitle.setText(response.body().getName());
+                FAQSDescription.setText(response.body().getDescription());
 
+            }
             @Override
             public void onFailure(Call<Setting> call, Throwable t) {
-
+                Toast.makeText(FAQSActivity.this, "Connection refuse", Toast.LENGTH_SHORT).show();
             }
         });
     }

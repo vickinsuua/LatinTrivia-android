@@ -22,9 +22,9 @@ import com.facebook.share.Sharer;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
 
+
 import app.my.myapp.R;
 import app.my.myapp.api.ApiService;
-import app.my.myapp.api.requests.AddExtraLifeRequest;
 import app.my.myapp.models.Game;
 import app.my.myapp.models.User;
 import butterknife.ButterKnife;
@@ -48,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
     private static final String TAG = "error";
     public String android_id;
     public String token;
+    Intent shareIntent;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
         getSupportActionBar().hide();
-        token = AccessToken.getCurrentAccessToken().getToken();
+//        token = AccessToken.getCurrentAccessToken().getToken();
         android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
 
         //init view
@@ -76,6 +77,15 @@ public class ProfileActivity extends AppCompatActivity {
         shareCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.setPackage("com.facebook.katana");
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT,"My app");
+                shareIntent.putExtra(Intent.EXTRA_TEXT,"This is a great App, should try it out!");
+                startActivity(Intent.createChooser(shareIntent,"Share via"));
+
+
                 shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
                     @Override
                     public void onSuccess(Sharer.Result result) {
@@ -111,42 +121,39 @@ public class ProfileActivity extends AppCompatActivity {
 
         ApiService.Api api = retrofit.create(ApiService.Api.class);
 
-        final Call<Game> game = api.getGame("2018-08-18 12:51:18");
+        final Call<Game> game = api.getGame();
 
         game.enqueue(new Callback<Game>() {
             @Override
             public void onResponse(Call<Game> call, Response<Game> response) {
-                if (response.isSuccessful()) {
-                    gameDateTextView.setText(response.body().getDate());
+                if (response.isSuccessful()){
+                    gameDateTextView.setText(String.valueOf(response.body().getDate()));
                     gamePrizeTextView.setText(Integer.toString(response.body().getPrize().intValue()));
-                } else {
                 }
+
             }
 
             @Override
             public void onFailure(Call<Game> call, Throwable t) {
-
+                Toast.makeText(ProfileActivity.this, "Connection refuse", Toast.LENGTH_SHORT).show();
             }
         });
 
 
-        final Call<User> user = api.getUser(token,android_id);
+        final Call<User> user = api.getUser("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2VfaWQiOiI5NjhlNzE5YmJjZWI4ODI0IiwiaWF0IjoxNTM3MTk4NjQwfQ.0HbNSyKenFeTOF1naHmD_xM-DHqEzVl_Zp9yKUlcuto",android_id);
 
         user.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                if (response.isSuccessful()) {
-                    nicknameTextView.setText(response.body().getNickname());
-                    balanceTextView.setText( Integer.toString(response.body().getBalance()));
-                    extraLifeTextView.setText( Integer.toString(response.body().getExtraLife()));
-                    saveCredentials(response);
-                } else {
-                }
+                nicknameTextView.setText(response.body().getNickname());
+                balanceTextView.setText( Integer.toString(response.body().getBalance()));
+                extraLifeTextView.setText( Integer.toString(response.body().getExtraLife()));
+                saveCredentials(response);
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Log.e(TAG, "QQQQQQQQQQQQQQQQQ"+t.getMessage() );
+                Toast.makeText(ProfileActivity.this, "Connection refuse", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -171,7 +178,17 @@ public class ProfileActivity extends AppCompatActivity {
      */
     @OnClick(R.id.listGameButton)
     void ListGame() {
-        Intent intent = new Intent(ProfileActivity.this, SettingActivity.class);
+        Intent intent = new Intent(ProfileActivity.this, ListGamesActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    /**
+     * Mailbox
+     */
+    @OnClick(R.id.mailboxButton)
+    void mailBox() {
+        Intent intent = new Intent(ProfileActivity.this, NotificationMailboxActivity.class);
         startActivity(intent);
         finish();
     }

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import app.my.myapp.R;
 import butterknife.BindView;
@@ -18,14 +19,14 @@ public class SettingActivity extends AppCompatActivity {
     Button HowToPlay;
     @BindView(R.id.FAQSButton)
     Button FAQs;
-    @BindView(R.id.RulesButton)
+    @BindView(R.id.Rules)
     Button Rules;
-    @BindView(R.id.PrivacyButton)
+    @BindView(R.id.Privacy)
     Button Privacy;
-    @BindView(R.id.TermButton)
+    @BindView(R.id.termsConditions)
     Button Terms;
-    @BindView(R.id.ContactButton)
-    Button ContactUs;
+//    @BindView(R.id.ContactButton)
+//    Button ContactUs;
     @BindView(R.id.QuestionButton)
     Button Questions;
 
@@ -46,7 +47,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
 
-    @OnClick(R.id.RulesButton)
+    @OnClick(R.id.Rules)
     void onRulesGame(){
         Intent intent = new Intent(SettingActivity.this, RulesActivity.class);
         startActivity(intent);
@@ -60,26 +61,26 @@ public class SettingActivity extends AppCompatActivity {
         finish();
     }
 
-    @OnClick(R.id.PrivacyButton)
+    @OnClick(R.id.Privacy)
     void onPrivacy(){
         Intent intent = new Intent(SettingActivity.this, PrivacyActivity.class);
         startActivity(intent);
         finish();
     }
 
-    @OnClick(R.id.TermButton)
+    @OnClick(R.id.termsConditions)
     void onTerms(){
         Intent intent = new Intent(SettingActivity.this, TermsActivity.class);
         startActivity(intent);
         finish();
     }
 
-    @OnClick(R.id.ContactButton)
-    void onContact(){
-        Intent intent = new Intent(SettingActivity.this, ContactActivity.class);
-        startActivity(intent);
-        finish();
-    }
+//    @OnClick(R.id.ContactButton)
+//    void onContact(){
+//        Intent intent = new Intent(SettingActivity.this, ContactActivity.class);
+//        startActivity(intent);
+//        finish();
+//    }
 
 
     @OnClick(R.id.QuestionButton)

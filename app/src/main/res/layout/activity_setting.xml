@@ -4,68 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@android:color/white">
 
     <Button
         android:id="@+id/howToPlayButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Como Jugar"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:text="How to Play"
         android:onClick="howToPlay"
-        android:textSize="5dp"
-        android:layout_marginTop="100dp"/>
+        android:textSize="10dp"
+        android:layout_marginTop="100dp"
+        android:background="@android:color/white"/>
 
     <Button
         android:id="@+id/FAQSButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Preguntas Frecuentes"
-        android:textSize="5dp"
-        android:layout_marginTop="100dp"
-        android:layout_toRightOf="@id/howToPlayButton"/>
-
-    <Button
-        android:id="@+id/RulesButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Reglas del juego"
-        android:textSize="5dp"
-        android:layout_marginTop="100dp"
-        android:layout_toRightOf="@id/FAQSButton"/>
-
-    <Button
-        android:id="@+id/PrivacyButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Politicas de Privacidad"
-        android:textSize="5dp"
-        android:layout_marginTop="200dp"/>
-
-    <Button
-        android:id="@+id/TermButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Terminos y condiciones"
-        android:textSize="5dp"
-        android:layout_marginTop="200dp"
-        android:layout_toRightOf="@id/PrivacyButton"/>
-
-    <Button
-        android:id="@+id/ContactButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Contactanos"
-        android:textSize="5dp"
-        android:layout_marginTop="200dp"
-        android:layout_toRightOf="@id/TermButton"/>
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:text="FAQs"
+        android:textSize="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_alignTop="@id/howToPlayButton"
+        android:background="@android:color/white"/>
 
     <Button
         android:id="@+id/QuestionButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Sugierenos preguntas para los juegos"
-        android:textSize="5dp"
-        android:layout_marginTop="300dp"/>
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:text="Submit trivia"
+        android:textSize="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_alignTop="@id/FAQSButton"
+        android:background="@android:color/white" />
+
+    <Button
+        android:id="@+id/RateUs"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:text="Rate Us"
+        android:textSize="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_alignTop="@id/QuestionButton"
+        android:background="@android:color/white" />
 
     <Button
         android:id="@+id/logoutButtom"
@@ -84,6 +63,36 @@
         android:layout_alignParentLeft="true"
         android:text="back"
         android:textSize="10dp"/>
+
+    <Button
+        android:id="@+id/termsConditions"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="450dp"
+        android:text="Terms"
+        android:textSize="10dp"
+        android:layout_toLeftOf="@id/termsConditions"/>
+
+    <Button
+        android:id="@+id/Privacy"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="450dp"
+        android:text="Privacy"
+        android:layout_centerHorizontal="true"
+        android:textSize="10dp"/>
+
+    <Button
+        android:id="@+id/Rules"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="450dp"
+        android:text="Rules"
+        android:textSize="10dp"
+        android:layout_toRightOf="@id/Privacy"/>
 
 
 </RelativeLayout>

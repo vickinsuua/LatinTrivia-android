@@ -175,11 +175,6 @@ public class RegisterActivity extends AppCompatActivity {
                     Bitmap bitmap = BitmapFactory.decodeFile(path);
                     image.setImageBitmap(bitmap);
             }
-//            Log.e( "onActivityResult: ",data.getPackage() );
-//            Serializable photo = data.getSerializableExtra('');
-
-//            Log.e( "onActivityResult: ",photo.toString() );
-
         }
     }
 
@@ -216,7 +211,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void sendNetworkRequest( MultipartBody.Part avatar,RequestBody nickname, RequestBody referral_code, RequestBody device_id){
-        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://10.237.158.103:3000").addConverterFactory(GsonConverterFactory.create());
+        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://10.237.158.104:3000").addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
 
@@ -235,9 +230,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(RegisterActivity.this,t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e( "onFailure: ",t.getMessage() );
-
+                Toast.makeText(RegisterActivity.this, "Connection refuse", Toast.LENGTH_SHORT).show();
             }
         });
     }

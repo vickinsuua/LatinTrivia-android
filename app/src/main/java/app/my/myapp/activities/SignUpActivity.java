@@ -151,7 +151,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     private void verificationUser(VerificationRequest verification){
-        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://10.237.158.104:3000").addConverterFactory(GsonConverterFactory.create());
+        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://10.20.153.104:3000").addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
 
@@ -176,7 +176,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void verificationUserFacebook(VerificationFacebookRequest verificationFacebook){
-        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://10.237.158.104:3000").addConverterFactory(GsonConverterFactory.create());
+        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("http://10.20.153.104:3000").addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
 
@@ -193,6 +193,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                Log.e( "onFailure: ",t.getMessage() );
                 Toast.makeText(SignUpActivity.this, "Connection refuse", Toast.LENGTH_SHORT).show();
             }
         });

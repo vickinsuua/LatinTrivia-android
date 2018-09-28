@@ -139,7 +139,11 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activities.NotificationMailboxActivity"></activity>
+        <activity android:name=".activities.NotificationMailboxActivity" />
+        <activity android:name=".activities.ListBalancesActivity" />
+        <activity android:name=".activities.ListBalancesWeekActivity" />
+        <activity android:name=".activities.ListBalanceFriendsActivity" />
+        <activity android:name=".activities.ListBalanceFriendsWeekActivity"></activity>
     </application>
 
 </manifest>

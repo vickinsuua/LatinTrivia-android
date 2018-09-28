@@ -7,6 +7,7 @@ import java.util.List;
 import app.my.myapp.api.requests.AddExtraLifeRequest;
 import app.my.myapp.api.requests.VerificationFacebookRequest;
 import app.my.myapp.api.requests.VerificationRequest;
+import app.my.myapp.models.Balance;
 import app.my.myapp.models.Game;
 import app.my.myapp.models.ListCategory;
 
@@ -44,12 +45,6 @@ public class ApiService {
                 "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
         @GET("/api/v1/game/show")
         Call<Game> getGame();
-
-        @Headers({
-                "Content-Type: application/json",
-                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
-        @GET("/api/v1/report/games/week")
-        Call<List<Game>> getListGames();
 
         @Headers({
                 "Content-Type: application/json",
@@ -95,6 +90,40 @@ public class ApiService {
         @Headers({"Content-Type: application/json"})
         @PATCH("/api/v1/verification/code/{id}")
         Call<Verification> verified(@Path("id") String _id, @Body Verification verification);
+
+        @Headers({"Content-Type: application/json"})
+        @PATCH("/api/v1/user/add/extra/life/{id}")
+        Call<User> addLife(@Path("id") String _id, @Body Verification verification);
+
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
+        @GET("/api/v1/report/games/week")
+        Call<List<Game>> getListGames();
+
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
+        @GET("/api/v1/report/leaderboard")
+        Call<List<Balance>> getBalances();
+
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
+        @GET("/api/v1/report/leaderboard/week")
+        Call<List<Balance>> getBalancesWeek();
+
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
+        @GET("/api/v1/report/friends/{id}")
+        Call<List<Balance>> getBalancesFriends(@Path("id") String _id);
+
+        @Headers({
+                "Content-Type: application/json",
+                "api-token: dFdKA9wIe7JdXpZwopDMrcnM91N1KNZW"})
+        @GET("/api/v1/report/friends/week/{id}")
+        Call<List<Balance>> getBalancesFriendsWeek(@Path("id") String _id);
 
 
     }

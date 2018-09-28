@@ -115,7 +115,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         final Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.237.158.103:3000")
+                .baseUrl("http://10.20.153.104:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -179,6 +179,16 @@ public class ProfileActivity extends AppCompatActivity {
     @OnClick(R.id.listGameButton)
     void ListGame() {
         Intent intent = new Intent(ProfileActivity.this, ListGamesActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    /**
+     * Menu
+     */
+    @OnClick(R.id.listBoardButton)
+    void ListLeaderboard() {
+        Intent intent = new Intent(ProfileActivity.this, ListBalancesActivity.class);
         startActivity(intent);
         finish();
     }

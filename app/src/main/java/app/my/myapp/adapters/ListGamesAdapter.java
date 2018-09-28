@@ -54,10 +54,6 @@ public class ListGamesAdapter  extends ArrayAdapter<Game>{
         Game game = games.get(position);
         holder.textViewGameDate.setText(String.valueOf(game.getDate()));
         holder.textViewGamePrize.setText(String.valueOf(game.getPrize()));
-//        TextView textViewDate = (TextView) convertView.findViewById(R.id.textViewGameDate);
-//        textViewDate.setText( String.valueOf(game.getDate()));
-//        TextView textViewPrize = (TextView) convertView.findViewById(R.id.textViewGamePrize);
-//        textViewPrize.setText(String.valueOf(game.getPrize()));
 
         return row;
     }
